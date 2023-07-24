@@ -1,10 +1,44 @@
+import { Routes, Route } from 'react-router-dom';
+import Navigation from './routes/navigation/navigation.component';
+import Home from './routes/home/home.component';
+import { getProducts } from './sanity/sanity-utils';
+import { productsLoading, productsRecieved } from './app/product/product.slice';
+import { getCategories } from './sanity/sanity-utils';
+import {
+  categoriesLoading,
+  categoriesRecieved,
+} from './app/category/category.slice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from './app/store';
 import './App.css';
+import { useEffect } from 'react';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetchProducts(dispatch);
+    fetchCategories(dispatch);
+  }, []);
+
+  const fetchProducts = async (dispatch: AppDispatch) => {
+    dispatch(productsLoading());
+    const products = await getProducts();
+    dispatch(productsRecieved(products));
+  };
+
+  const fetchCategories = async (dispatch: AppDispatch) => {
+    dispatch(categoriesLoading());
+    const categories = await getCategories();
+    dispatch(categoriesRecieved(categories));
+  };
+
   return (
-    <>
-      <h1 className='text-3xl font-bold underline'>Hello world!</h1>
-    </>
+    <Routes>
+      <Route path='/' element={<Navigation />}>
+        <Route index element={<Home />} />
+      </Route>
+    </Routes>
   );
 }
 
