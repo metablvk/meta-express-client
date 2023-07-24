@@ -1,6 +1,5 @@
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addToCart } from '../../app/cart/cart.slice';
+
 import { Category } from '../../types/category.type';
 import { Product } from '../../types/product.types';
 
@@ -10,7 +9,6 @@ type CProps = {
 };
 
 const Category = ({ category, products }: CProps) => {
-  const dispatch = useDispatch();
   const filterByC = (filterBy: string) => {
     const fC = [];
     for (let i = 0; i < products.length; i++) {
