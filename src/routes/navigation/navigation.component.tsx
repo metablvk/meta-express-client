@@ -1,13 +1,12 @@
-import { Link, Outlet } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { RootState } from '../../app/store';
-import { removeItemFromCart } from '../../app/cart/cart.slice';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 const Navigation = () => {
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
-  const dispatch = useDispatch();
+
   const cartCount = cartItems.reduce(
     (total, cartItem) => total + cartItem.quantity,
     0
