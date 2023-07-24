@@ -25,32 +25,32 @@ const Category = ({ category, products }: CProps) => {
     return fC;
   };
   return (
-    <div className='mt-4'>
+    <div className='my-12'>
       <h2 className='text-3xl'>{category.name}</h2>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4'>
         {filterByC(category.name)
           .slice(0, 10)
           .map((fC) => (
-            <div className='border-2 p-4 mt-8'>
-              <img
-                src={fC.image[0].asset.url}
-                alt={fC.name}
-                className='block mx-auto w-3/4 md:w-2/4 lg:w-2/4'
-              />
-              <p>{fC.name}</p>
-              <p>${fC.price}</p>
-              <button
-                className='block ml-auto bg-black text-white px-3 py-2'
-                onClick={() => dispatch(addToCart(fC))}
-              >
-                Add to cart
-              </button>
-            </div>
+            <Link to={`/products/${fC.slug}`}>
+              <div className='border-2 p-4 mt-8'>
+                <img
+                  src={fC.image[0].asset.url}
+                  alt={fC.name}
+                  className='block mx-auto w-3/4 md:w-2/4 lg:w-2/4'
+                />
+
+                <p className='font-bold text-gray-500'>
+                  {fC.name.length > 25 ? `${fC.name.slice(0, 25)}...` : fC.name}
+                </p>
+
+                <p>${fC.price}</p>
+              </div>
+            </Link>
           ))}
       </div>
-      <div className='flex justify-end mt-4'>
+      {/* <div className='flex justify-end mt-4'>
         <Link to={`/products/${category.slug}`}>View More</Link>
-      </div>
+      </div> */}
     </div>
   );
 };

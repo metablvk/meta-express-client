@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from './app/store';
 import './App.css';
 import { useEffect } from 'react';
+import Product from './routes/product/product.component';
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Navigation />}>
         <Route index element={<Home />} />
+        <Route path='/products/:slug' element={<Product />} />
       </Route>
     </Routes>
   );

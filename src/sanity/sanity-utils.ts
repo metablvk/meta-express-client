@@ -21,6 +21,25 @@ export async function getProducts(): Promise<Product[]> {
   );
 }
 
+export async function getProduct(slug: string): Promise<Product> {
+  return createClient(clientConfig).fetch(
+    `*[_type == "product" && slug.current == $slug][0]{
+     _id,
+      _createdAt,
+      name,
+      "slug": slug.current,
+      image[]{
+        asset->{url}
+      },
+      price,
+      discount, 
+     categories[]->{ name},
+      desc
+    }`,
+    { slug }
+  );
+}
+
 export async function getCategories(): Promise<Category[]> {
   return createClient(clientConfig).fetch(
     `*[_type == "category"]{

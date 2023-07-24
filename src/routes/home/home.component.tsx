@@ -12,7 +12,12 @@ const Home = () => {
 
   return (
     <div className=''>
-      <h1>Welcome to Meta Express</h1>
+      <div className='mb-12 mt-12 h-40'>
+        <h1 className='text-4xl font-bold tracking-wide'>
+          Welcome to Meta Express
+        </h1>
+        <p>Bringing to you the latest tech.</p>
+      </div>
       {categories.map((c, id) => (
         <Category category={c} products={products} key={id} />
       ))}

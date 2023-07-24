@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { RootState } from '../../app/store';
 
@@ -15,7 +15,9 @@ const Navigation = () => {
     <>
       <nav className=' relative py-4'>
         <div className='container mx-auto flex justify-between'>
-          <div>Meta Express</div>
+          <div>
+            <Link to='/'>Meta Express</Link>
+          </div>
           <div className='flex'>
             <div className='relative'>
               <FontAwesomeIcon
