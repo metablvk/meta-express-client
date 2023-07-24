@@ -43,15 +43,14 @@ export const cartSlice = createSlice({
     },
     removeItemFromCart(state, action) {
       let updatedCartItems: CartItem[] = [];
-      console.log(state, action);
+
       const existingCartItem = state.cartItems.find(
         (cartItem) => cartItem.product._id === action.payload.product._id
       );
-      console.log(existingCartItem);
 
       if (existingCartItem?.quantity === 1) {
-        updatedCartItems.filter(
-          (cartItem) => cartItem.product._id === action.payload.product._id
+        updatedCartItems = state.cartItems.filter(
+          (cartItem) => cartItem.product._id !== action.payload.product._id
         );
       } else {
         updatedCartItems = state.cartItems.map((cartItem) =>

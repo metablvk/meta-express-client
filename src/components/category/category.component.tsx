@@ -46,9 +46,6 @@ const Category = ({ category, products }: CProps) => {
             </Link>
           ))}
       </div>
-      {/* <div className='flex justify-end mt-4'>
-        <Link to={`/products/${category.slug}`}>View More</Link>
-      </div> */}
     </div>
   );
 };

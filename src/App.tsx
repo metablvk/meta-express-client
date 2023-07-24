@@ -13,6 +13,7 @@ import { AppDispatch } from './app/store';
 import './App.css';
 import { useEffect } from 'react';
 import Product from './routes/product/product.component';
+import Cart from './routes/cart/cart.component';
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ function App() {
       <Route path='/' element={<Navigation />}>
         <Route index element={<Home />} />
         <Route path='/products/:slug' element={<Product />} />
+        <Route path='/cart' element={<Cart />} />
       </Route>
     </Routes>
   );
