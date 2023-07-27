@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import { Category } from '../../types/category.type';
 import { Product } from '../../types/product.types';
 import CategoryProduct from './category-card/category-card.component';
